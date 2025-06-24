@@ -517,7 +517,7 @@ export default function Portfolio() {
                   </div>
                   <div>
                     <div className="font-medium text-gray-900 dark:text-white">Phone</div>
-                    <div className="text-muted-foreground">+977 98XXXXXXXX</div>
+                    <div className="text-muted-foreground">+977 9813779924 / +91 6207004895</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
