@@ -202,7 +202,7 @@ export function EnhancedContactForm() {
               <Mail className="h-5 w-5 text-blue-600" />
               <div>
                 <p className="text-sm font-medium text-gray-900 dark:text-white">Email</p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">sameer@example.com</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">speaktosameernp@gmail.com</p>
               </div>
             </div>
             <div className="flex items-center gap-3 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">

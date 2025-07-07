@@ -508,7 +508,7 @@ export default function Portfolio() {
                   </div>
                   <div>
                     <div className="font-medium text-gray-900 dark:text-white">Email</div>
-                    <div className="text-muted-foreground">sameer@example.com</div>
+                    <div className="text-muted-foreground">speaktosameernp@gmail.com</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
