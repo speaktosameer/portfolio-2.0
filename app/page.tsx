@@ -160,7 +160,7 @@ export default function Portfolio() {
             <Button
               variant="outline"
               size="icon"
-              className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+              className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
               asChild
             >
               <a href="https://github.com/speaktosameer" target="_blank" rel="noopener noreferrer">
@@ -170,7 +170,7 @@ export default function Portfolio() {
             <Button
               variant="outline"
               size="icon"
-              className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+              className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
               asChild
             >
               <a href="https://linkedin.com/in/speaktosameernp" target="_blank" rel="noopener noreferrer">
@@ -180,7 +180,7 @@ export default function Portfolio() {
             <Button
               variant="outline"
               size="icon"
-              className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+              className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
               asChild
             >
               <a href="https://x.com/speaktosameer" target="_blank" rel="noopener noreferrer">
@@ -190,7 +190,7 @@ export default function Portfolio() {
             <Button
               variant="outline"
               size="icon"
-              className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+              className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
               asChild
             >
               <a href="https://www.facebook.com/speaktosameer/" target="_blank" rel="noopener noreferrer">
@@ -230,7 +230,7 @@ export default function Portfolio() {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
                     asChild
                   >
                     <a href="https://github.com/speaktosameer" target="_blank" rel="noopener noreferrer">
@@ -240,7 +240,7 @@ export default function Portfolio() {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
                     asChild
                   >
                     <a href="https://linkedin.com/in/speaktosameernp" target="_blank" rel="noopener noreferrer">
@@ -250,7 +250,7 @@ export default function Portfolio() {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
                     asChild
                   >
                     <a href="https://speaktosameer.medium.com/" target="_blank" rel="noopener noreferrer">
@@ -313,52 +313,50 @@ export default function Portfolio() {
               I offer comprehensive digital solutions to help your business thrive in the modern web landscape.
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((index) => (
-              <ScrollAnimation key={index} animation="scale-up" delay={index * 100}>
-                <Card className="text-center hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border-0 group">
-                  <CardHeader className="pb-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                      <Code className="h-10 w-10 text-white" />
-                    </div>
-                    <CardTitle className="text-2xl mb-4 text-gray-900 dark:text-white">React Development</CardTitle>
-                    <CardDescription className="text-lg leading-relaxed">
-                      Modern, scalable React applications with clean code and optimal performance.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2 justify-center">
-                      <Badge
-                        variant="secondary"
-                        className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
-                      >
-                        React
-                      </Badge>
-                      <Badge
-                        variant="secondary"
-                        className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
-                      >
-                        Next.js
-                      </Badge>
-                      <Badge
-                        variant="secondary"
-                        className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
-                      >
-                        TypeScript
-                      </Badge>
-                      <Badge
-                        variant="secondary"
-                        className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
-                      >
-                        Tailwind CSS
-                      </Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-              </ScrollAnimation>
-            ))}
+          <div className="grid md:grid-cols-4 gap-8">
+            <ScrollAnimation animation="scale-up" delay={0}>
+              <Card className="text-center hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border-0 group">
+                <CardHeader className="pb-4">
+                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <Code className="h-10 w-10 text-white" />
+                  </div>
+                  <CardTitle className="text-2xl mb-4 text-gray-900 dark:text-white">Full-Stack Development</CardTitle>
+                  <CardDescription className="text-lg leading-relaxed">
+                    Modern web applications with React, Node.js, and cloud technologies.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    <Badge
+                      variant="secondary"
+                      className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
+                    >
+                      React
+                    </Badge>
+                    <Badge
+                      variant="secondary"
+                      className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
+                    >
+                      Next.js
+                    </Badge>
+                    <Badge
+                      variant="secondary"
+                      className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
+                    >
+                      Node.js
+                    </Badge>
+                    <Badge
+                      variant="secondary"
+                      className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
+                    >
+                      TypeScript
+                    </Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            </ScrollAnimation>
 
-            <ScrollAnimation animation="scale-up" delay={1 * 100}>
+            <ScrollAnimation animation="scale-up" delay={100}>
               <Card className="text-center hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-0 group">
                 <CardHeader className="pb-4">
                   <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
@@ -393,14 +391,14 @@ export default function Portfolio() {
                       variant="secondary"
                       className="bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300"
                     >
-                      User Research
+                      Mobile Design
                     </Badge>
                   </div>
                 </CardContent>
               </Card>
             </ScrollAnimation>
 
-            <ScrollAnimation animation="scale-up" delay={2 * 100}>
+            <ScrollAnimation animation="scale-up" delay={200}>
               <Card className="text-center hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border-0 group">
                 <CardHeader className="pb-4">
                   <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
@@ -423,12 +421,6 @@ export default function Portfolio() {
                       variant="secondary"
                       className="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
                     >
-                      Plugin Development
-                    </Badge>
-                    <Badge
-                      variant="secondary"
-                      className="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
-                    >
                       WooCommerce
                     </Badge>
                     <Badge
@@ -436,6 +428,54 @@ export default function Portfolio() {
                       className="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
                     >
                       Performance
+                    </Badge>
+                    <Badge
+                      variant="secondary"
+                      className="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
+                    >
+                      SEO
+                    </Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            </ScrollAnimation>
+
+            <ScrollAnimation animation="scale-up" delay={300}>
+              <Card className="text-center hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 border-0 group">
+                <CardHeader className="pb-4">
+                  <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <Zap className="h-10 w-10 text-white" />
+                  </div>
+                  <CardTitle className="text-2xl mb-4 text-gray-900 dark:text-white">Digital Solutions</CardTitle>
+                  <CardDescription className="text-lg leading-relaxed">
+                    E-commerce, healthcare, education, and business management platforms.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    <Badge
+                      variant="secondary"
+                      className="bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300"
+                    >
+                      E-commerce
+                    </Badge>
+                    <Badge
+                      variant="secondary"
+                      className="bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300"
+                    >
+                      Healthcare
+                    </Badge>
+                    <Badge
+                      variant="secondary"
+                      className="bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300"
+                    >
+                      Education
+                    </Badge>
+                    <Badge
+                      variant="secondary"
+                      className="bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300"
+                    >
+                      Business
                     </Badge>
                   </div>
                 </CardContent>
@@ -517,7 +557,7 @@ export default function Portfolio() {
                   </div>
                   <div>
                     <div className="font-medium text-gray-900 dark:text-white">Phone</div>
-                    <div className="text-muted-foreground">+977 9813779924 / +91 6207004895</div>
+                    <div className="text-muted-foreground">+977 98XXXXXXXX</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
@@ -536,7 +576,7 @@ export default function Portfolio() {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
                     asChild
                   >
                     <a href="https://github.com/speaktosameer" target="_blank" rel="noopener noreferrer">
@@ -546,7 +586,7 @@ export default function Portfolio() {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
                     asChild
                   >
                     <a href="https://linkedin.com/in/speaktosameernp" target="_blank" rel="noopener noreferrer">
@@ -556,7 +596,7 @@ export default function Portfolio() {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
                     asChild
                   >
                     <a href="https://x.com/speaktosameer" target="_blank" rel="noopener noreferrer">
@@ -566,7 +606,7 @@ export default function Portfolio() {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
                     asChild
                   >
                     <a href="https://www.facebook.com/speaktosameer/" target="_blank" rel="noopener noreferrer">
@@ -644,7 +684,7 @@ export default function Portfolio() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+                  className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
                   asChild
                 >
                   <a href="https://github.com/speaktosameer" target="_blank" rel="noopener noreferrer">
@@ -654,7 +694,7 @@ export default function Portfolio() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+                  className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
                   asChild
                 >
                   <a href="https://linkedin.com/in/speaktosameernp" target="_blank" rel="noopener noreferrer">
@@ -664,7 +704,7 @@ export default function Portfolio() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+                  className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
                   asChild
                 >
                   <a href="https://speaktosameer.medium.com/" target="_blank" rel="noopener noreferrer">

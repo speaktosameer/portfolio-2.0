@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Calendar, Clock, ExternalLink, BookOpen } from "lucide-react"
+import { Calendar, Clock, ExternalLink, BookOpen, AlertCircle, Loader2 } from "lucide-react"
 
 interface MediumPost {
   title: string
@@ -18,17 +18,30 @@ interface MediumPost {
 export function MediumBlogSection() {
   const [posts, setPosts] = useState<MediumPost[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const [source, setSource] = useState<string>("medium")
 
   useEffect(() => {
     const fetchMediumPosts = async () => {
       try {
+        setLoading(true)
+        setError(null)
+
         const response = await fetch("/api/medium")
-        if (response.ok) {
-          const data = await response.json()
-          setPosts(data.posts || [])
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
         }
+
+        const data = await response.json()
+        setPosts(data.posts || [])
+        setSource(data.source || "fallback")
       } catch (error) {
         console.error("Error fetching Medium posts:", error)
+        setError("Failed to load blog posts")
+        // Set fallback posts directly in case of error
+        setPosts(getFallbackPosts())
+        setSource("fallback")
       } finally {
         setLoading(false)
       }
@@ -37,8 +50,8 @@ export function MediumBlogSection() {
     fetchMediumPosts()
   }, [])
 
-  // Fallback posts if API fails
-  const fallbackPosts: MediumPost[] = [
+  // Fallback posts function (same as in API route)
+  const getFallbackPosts = (): MediumPost[] => [
     {
       title: "Building Scalable React Applications: Best Practices for 2024",
       description:
@@ -68,29 +81,23 @@ export function MediumBlogSection() {
     },
   ]
 
-  const displayPosts = posts.length > 0 ? posts : fallbackPosts
-
   if (loading) {
     return (
       <section className="py-20 px-4 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <div className="animate-pulse">
-              <div className="h-12 bg-gray-300 rounded w-96 mx-auto mb-4"></div>
-              <div className="h-6 bg-gray-300 rounded w-128 mx-auto"></div>
-            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              Latest from Medium
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Fresh insights, tutorials, and thoughts on web development, design, and technology.
+            </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="animate-pulse">
-                <div className="bg-gray-300 h-48 rounded-t-lg"></div>
-                <div className="bg-gray-200 p-6 rounded-b-lg">
-                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
-                  <div className="h-4 bg-gray-300 rounded mb-4 w-3/4"></div>
-                  <div className="h-3 bg-gray-300 rounded w-1/2"></div>
-                </div>
-              </div>
-            ))}
+          <div className="flex items-center justify-center py-12">
+            <div className="flex items-center gap-3 text-muted-foreground">
+              <Loader2 className="h-6 w-6 animate-spin" />
+              <span className="text-lg">Loading latest posts...</span>
+            </div>
           </div>
         </div>
       </section>
@@ -108,10 +115,16 @@ export function MediumBlogSection() {
             Fresh insights, tutorials, and thoughts on web development, design, and technology straight from my Medium
             blog.
           </p>
+          {source === "fallback" && (
+            <div className="flex items-center justify-center gap-2 mt-4 text-amber-600 dark:text-amber-400">
+              <AlertCircle className="h-4 w-4" />
+              <span className="text-sm">Showing featured posts (Medium feed temporarily unavailable)</span>
+            </div>
+          )}
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {displayPosts.slice(0, 6).map((post, index) => (
+          {posts.slice(0, 6).map((post, index) => (
             <Card
               key={post.link + index}
               className="group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 bg-white dark:bg-gray-800 border-0 shadow-lg overflow-hidden"
@@ -120,8 +133,10 @@ export function MediumBlogSection() {
               <div className="relative overflow-hidden bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 h-48 flex items-center justify-center">
                 <BookOpen className="h-16 w-16 text-blue-500 opacity-50" />
                 <div className="absolute top-4 left-4">
-                  <Badge className="bg-gradient-to-r from-blue-500 to-purple-500 text-white border-0 shadow-lg">
-                    Medium
+                  <Badge
+                    className={`${source === "medium" ? "bg-gradient-to-r from-green-500 to-emerald-500" : "bg-gradient-to-r from-blue-500 to-purple-500"} text-white border-0 shadow-lg`}
+                  >
+                    {source === "medium" ? "Live from Medium" : "Featured Post"}
                   </Badge>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

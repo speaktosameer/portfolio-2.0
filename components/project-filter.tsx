@@ -13,74 +13,189 @@ interface Project {
   image: string
   tags: string[]
   link: string
+  type: "website" | "design" | "app"
 }
 
 const projects: Project[] = [
   {
     id: 1,
-    title: "E-commerce Platform",
-    description: "Modern e-commerce platform with real-time inventory",
+    title: "Land Buyers",
+    description: "Real estate platform for land buyers and sellers with advanced search functionality",
     longDescription:
-      "A comprehensive e-commerce platform built with React and Next.js, featuring real-time inventory management, secure payment processing with Stripe integration, advanced search and filtering, user authentication, order tracking, and admin dashboard. The platform handles thousands of products and provides seamless shopping experience across all devices.",
+      "A comprehensive real estate platform built for land buyers and sellers. Features include advanced property search, interactive maps, property listings management, user authentication, and secure payment processing. The platform handles thousands of property listings with real-time updates and provides seamless experience across all devices.",
     category: "React",
     image: "/placeholder.svg?height=300&width=500",
-    tags: ["React", "Next.js", "TypeScript", "Stripe", "PostgreSQL"],
-    link: "https://github.com/speaktosameer",
+    tags: ["React", "Next.js", "Real Estate", "Maps API", "Payment Integration"],
+    link: "https://www.landbuyers.com/",
+    type: "website",
   },
   {
     id: 2,
-    title: "Fitness App Design",
-    description: "Complete UI/UX design for fitness tracking mobile app",
+    title: "OYDEE Mobile App",
+    description: "Complete mobile app UI/UX design with modern interface and user experience",
     longDescription:
-      "Comprehensive UI/UX design project for a fitness tracking mobile application. Conducted extensive user research, created user personas, designed wireframes and high-fidelity mockups, developed interactive prototypes, and established a complete design system. The app focuses on workout tracking, nutrition monitoring, and social features to keep users motivated.",
+      "Comprehensive mobile application design for OYDEE platform. Created complete user interface design system, wireframes, prototypes, and interactive mockups. The design focuses on user experience optimization, accessibility, and modern mobile design patterns. Includes onboarding flows, main app screens, and micro-interactions.",
     category: "UI/UX",
     image: "/placeholder.svg?height=300&width=500",
-    tags: ["Figma", "User Research", "Prototyping", "Design System"],
-    link: "https://www.behance.net/speaktosameer",
+    tags: ["Figma", "Mobile Design", "UI/UX", "Prototyping", "Design System"],
+    link: "https://www.figma.com/design/XMuc6XpQLMSD9pyvmiqCXW/OYDEE?node-id=0-1&p=f&t=IfOCzmicRKfabZ3d-0",
+    type: "design",
   },
   {
     id: 3,
-    title: "Restaurant Website",
-    description: "Custom WordPress theme with online ordering system",
+    title: "Aceso Essentia Care",
+    description: "Healthcare platform with patient management and appointment scheduling",
     longDescription:
-      "Custom WordPress website for a restaurant chain featuring online ordering system, table reservation functionality, menu management, customer reviews, location finder, and integration with delivery services. Built with performance optimization, SEO best practices, and mobile-responsive design to increase online orders by 150%.",
-    category: "WordPress",
+      "Modern healthcare platform built with React and advanced backend systems. Features include patient management, appointment scheduling, medical records, telemedicine capabilities, and secure patient data handling. The platform ensures HIPAA compliance and provides seamless experience for both patients and healthcare providers.",
+    category: "React",
     image: "/placeholder.svg?height=300&width=500",
-    tags: ["WordPress", "WooCommerce", "PHP", "MySQL", "Custom Theme"],
-    link: "https://sameer-ansari.com.np",
+    tags: ["React", "Healthcare", "Patient Management", "Security", "API Integration"],
+    link: "http://acesoessentia.care/",
+    type: "website",
   },
   {
     id: 4,
-    title: "Analytics Dashboard",
-    description: "Real-time analytics dashboard with interactive charts",
+    title: "Bienes Raices Club",
+    description: "Spanish real estate platform with property management and listings",
     longDescription:
-      "Advanced analytics dashboard built with React and D3.js, featuring real-time data visualization, interactive charts and graphs, customizable widgets, data export functionality, user role management, and API integrations. The dashboard processes millions of data points and provides actionable insights for business decision-making.",
-    category: "React",
+      "A sophisticated real estate platform for Spanish-speaking markets. Built with modern web technologies, featuring property listings, advanced search filters, user profiles, property management tools, and multilingual support. The platform includes CRM functionality for real estate agents and property owners.",
+    category: "WordPress",
     image: "/placeholder.svg?height=300&width=500",
-    tags: ["React", "D3.js", "Chart.js", "WebSocket", "Node.js"],
-    link: "https://github.com/speaktosameer",
+    tags: ["WordPress", "Real Estate", "Multilingual", "CRM", "Property Management"],
+    link: "https://bienesraicesclub.com/",
+    type: "website",
   },
   {
     id: 5,
-    title: "Brand Identity Design",
-    description: "Complete brand identity for tech startup",
+    title: "Esumon Platform",
+    description: "Educational technology platform with interactive learning modules",
     longDescription:
-      "Complete brand identity design project for a tech startup including logo design, color palette development, typography selection, brand guidelines creation, business card design, website mockups, and marketing materials. The brand identity reflects innovation, trust, and modern technology while maintaining professional appeal.",
-    category: "UI/UX",
+      "Comprehensive educational technology platform designed for modern learning. Features include interactive course modules, progress tracking, student-teacher communication, assignment management, and analytics dashboard. Built with scalable architecture to handle thousands of concurrent users and multimedia content delivery.",
+    category: "React",
     image: "/placeholder.svg?height=300&width=500",
-    tags: ["Branding", "Logo Design", "Adobe Creative Suite", "Brand Guidelines"],
-    link: "https://www.behance.net/speaktosameer",
+    tags: ["React", "Education", "LMS", "Interactive Learning", "Analytics"],
+    link: "https://esumon.com/",
+    type: "website",
   },
   {
     id: 6,
-    title: "Blog Platform",
-    description: "Custom WordPress blog with advanced CMS features",
+    title: "Srishty Garden Resorts",
+    description: "Luxury resort website with booking system and virtual tours",
     longDescription:
-      "Advanced WordPress blog platform with custom post types, advanced content management system, SEO optimization, social media integration, newsletter subscription, comment system with moderation, multi-author support, and performance optimization. The platform supports multiple content formats and provides excellent user experience for both readers and content creators.",
+      "Elegant website for luxury garden resort featuring online booking system, virtual property tours, amenities showcase, and guest management. The site includes high-quality image galleries, interactive maps, seasonal pricing, and integration with booking platforms. Optimized for mobile devices and search engines.",
     category: "WordPress",
     image: "/placeholder.svg?height=300&width=500",
-    tags: ["WordPress", "Custom Post Types", "SEO", "Performance", "Security"],
-    link: "https://sameer-ansari.com.np",
+    tags: ["WordPress", "Hospitality", "Booking System", "Virtual Tours", "SEO"],
+    link: "https://srishtygardenresorts.com/",
+    type: "website",
+  },
+  {
+    id: 7,
+    title: "Uncover Math Genius",
+    description: "Interactive mathematics learning platform for students",
+    longDescription:
+      "Innovative mathematics learning platform designed to make math engaging and accessible. Features include interactive problem solving, step-by-step solutions, progress tracking, gamification elements, and adaptive learning algorithms. The platform caters to different learning styles and skill levels.",
+    category: "React",
+    image: "/placeholder.svg?height=300&width=500",
+    tags: ["React", "Education", "Mathematics", "Interactive Learning", "Gamification"],
+    link: "https://uncovermathgenius.com/",
+    type: "website",
+  },
+  {
+    id: 8,
+    title: "The Reader Nest",
+    description: "Digital library and reading platform with community features",
+    longDescription:
+      "Comprehensive digital reading platform that combines library functionality with social features. Users can discover books, track reading progress, join book clubs, write reviews, and connect with fellow readers. The platform includes recommendation algorithms and personalized reading suggestions.",
+    category: "WordPress",
+    image: "/placeholder.svg?height=300&width=500",
+    tags: ["WordPress", "Digital Library", "Community", "Reading Tracker", "Social Features"],
+    link: "https://thereadernest.com/",
+    type: "website",
+  },
+  {
+    id: 9,
+    title: "Aussi ACC",
+    description: "Australian accounting services website with client portal",
+    longDescription:
+      "Professional accounting services website for Australian market. Features include service portfolio, client portal, document management, appointment scheduling, and secure client communication. The site is optimized for local SEO and includes compliance with Australian business regulations.",
+    category: "WordPress",
+    image: "/placeholder.svg?height=300&width=500",
+    tags: ["WordPress", "Accounting", "Client Portal", "Document Management", "Australian Market"],
+    link: "https://www.aussiacc.com.au/",
+    type: "website",
+  },
+  {
+    id: 10,
+    title: "Dev Dental Art Implant Centre",
+    description: "Dental clinic website with appointment booking and treatment information",
+    longDescription:
+      "Modern dental clinic website featuring comprehensive treatment information, before/after galleries, appointment booking system, patient testimonials, and doctor profiles. The site includes educational content about dental procedures and maintains HIPAA compliance for patient data.",
+    category: "WordPress",
+    image: "/placeholder.svg?height=300&width=500",
+    tags: ["WordPress", "Healthcare", "Dental", "Appointment Booking", "Medical Compliance"],
+    link: "https://devdentalartimplantcentre.com/",
+    type: "website",
+  },
+  {
+    id: 11,
+    title: "iFix Mobile Repair",
+    description: "Mobile device repair service website with online booking",
+    longDescription:
+      "Service-oriented website for mobile device repair business. Features include service catalog, pricing calculator, online booking system, repair status tracking, and customer reviews. The site is optimized for local search and includes integration with inventory management systems.",
+    category: "WordPress",
+    image: "/placeholder.svg?height=300&width=500",
+    tags: ["WordPress", "Service Business", "Booking System", "Local SEO", "Repair Tracking"],
+    link: "https://ifixmobilerepair.com/",
+    type: "website",
+  },
+  {
+    id: 12,
+    title: "Gold Math Online",
+    description: "Advanced mathematics learning platform with AI-powered tutoring",
+    longDescription:
+      "Cutting-edge online mathematics platform featuring AI-powered tutoring, adaptive learning paths, real-time problem solving, and comprehensive progress analytics. The platform uses machine learning to personalize learning experiences and provides instant feedback on mathematical concepts.",
+    category: "React",
+    image: "/placeholder.svg?height=300&width=500",
+    tags: ["React", "AI/ML", "Mathematics", "Adaptive Learning", "Real-time Analytics"],
+    link: "https://goldmath.online/",
+    type: "website",
+  },
+  {
+    id: 13,
+    title: "Energy Solutions Solar",
+    description: "Solar energy company website with calculator and consultation booking",
+    longDescription:
+      "Comprehensive solar energy company website featuring solar calculator, energy savings estimator, consultation booking, project gallery, and financing options. The site includes educational content about renewable energy and integration with CRM systems for lead management.",
+    category: "WordPress",
+    image: "/placeholder.svg?height=300&width=500",
+    tags: ["WordPress", "Solar Energy", "Calculator", "Lead Generation", "Renewable Energy"],
+    link: "https://energysolutions-solar.com/",
+    type: "website",
+  },
+  {
+    id: 14,
+    title: "Care Integrated Australia",
+    description: "Healthcare integration platform for Australian medical services",
+    longDescription:
+      "Sophisticated healthcare integration platform designed for Australian medical services. Features include patient data integration, appointment coordination, medical record management, and compliance with Australian healthcare regulations. The platform connects multiple healthcare providers for seamless patient care.",
+    category: "React",
+    image: "/placeholder.svg?height=300&width=500",
+    tags: ["React", "Healthcare Integration", "Medical Records", "Australian Compliance", "API Integration"],
+    link: "https://careintegrated.com.au/",
+    type: "website",
+  },
+  {
+    id: 15,
+    title: "Vereda Platform",
+    description: "Business management platform with analytics and reporting",
+    longDescription:
+      "Comprehensive business management platform featuring analytics dashboard, reporting tools, project management, team collaboration, and performance tracking. Built with modern React architecture and includes real-time data visualization and automated reporting capabilities.",
+    category: "React",
+    image: "/placeholder.svg?height=300&width=500",
+    tags: ["React", "Business Management", "Analytics", "Reporting", "Team Collaboration"],
+    link: "https://vereda.in/",
+    type: "website",
   },
 ]
 
@@ -109,6 +224,9 @@ export function ProjectFilter() {
             }`}
           >
             {category}
+            <Badge variant="secondary" className="ml-2 text-xs">
+              {category === "All" ? projects.length : projects.filter((p) => p.category === category).length}
+            </Badge>
           </Button>
         ))}
       </div>
@@ -140,6 +258,20 @@ export function ProjectFilter() {
                     } text-white border-0`}
                   >
                     {project.category}
+                  </Badge>
+                </div>
+                <div className="absolute top-4 right-4">
+                  <Badge
+                    variant="secondary"
+                    className={`${
+                      project.type === "website"
+                        ? "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
+                        : project.type === "design"
+                          ? "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300"
+                          : "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
+                    }`}
+                  >
+                    {project.type === "website" ? "🌐 Website" : project.type === "design" ? "🎨 Design" : "📱 App"}
                   </Badge>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -198,6 +330,22 @@ export function ProjectFilter() {
                 >
                   {selectedProject.category}
                 </Badge>
+                <Badge
+                  variant="outline"
+                  className={`${
+                    selectedProject.type === "website"
+                      ? "border-blue-500 text-blue-600"
+                      : selectedProject.type === "design"
+                        ? "border-purple-500 text-purple-600"
+                        : "border-green-500 text-green-600"
+                  }`}
+                >
+                  {selectedProject.type === "website"
+                    ? "🌐 Website"
+                    : selectedProject.type === "design"
+                      ? "🎨 Design"
+                      : "📱 App"}
+                </Badge>
               </div>
               <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{selectedProject.longDescription}</p>
               <div className="flex flex-wrap gap-2 mb-6">
@@ -212,7 +360,7 @@ export function ProjectFilter() {
                 className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
               >
                 <a href={selectedProject.link} target="_blank" rel="noopener noreferrer">
-                  View Project
+                  {selectedProject.type === "design" ? "View Design" : "Visit Website"}
                 </a>
               </Button>
             </div>

@@ -5,7 +5,10 @@ export async function GET() {
     // Medium RSS feed URL for the user
     const mediumRSSUrl = "https://medium.com/feed/@speaktosameer"
 
-    const response = await fetch(mediumRSSUrl, {
+    // Use a CORS proxy to avoid CORS issues
+    const proxyUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(mediumRSSUrl)}`
+
+    const response = await fetch(proxyUrl, {
       headers: {
         "User-Agent": "Mozilla/5.0 (compatible; Portfolio/1.0)",
       },
@@ -13,18 +16,40 @@ export async function GET() {
     })
 
     if (!response.ok) {
-      throw new Error("Failed to fetch Medium posts")
+      console.log("RSS2JSON API failed, using fallback posts")
+      return NextResponse.json({
+        posts: getFallbackPosts(),
+        source: "fallback",
+      })
     }
 
-    const xmlText = await response.text()
+    const data = await response.json()
 
-    // Parse XML to extract posts (simplified version)
-    const posts = parseMediumRSS(xmlText)
+    if (data.status !== "ok" || !data.items) {
+      console.log("RSS2JSON returned invalid data, using fallback posts")
+      return NextResponse.json({
+        posts: getFallbackPosts(),
+        source: "fallback",
+      })
+    }
 
-    return NextResponse.json({ posts })
+    // Parse the RSS2JSON response
+    const posts = data.items.slice(0, 6).map((item: any) => ({
+      title: cleanText(item.title || ""),
+      link: item.link || "https://speaktosameer.medium.com/",
+      pubDate: item.pubDate || new Date().toISOString(),
+      description: cleanText(item.description || item.content || "").substring(0, 200) + "...",
+      categories: item.categories || ["Web Development"],
+      readTime: calculateReadTime(item.content || item.description || ""),
+    }))
+
+    return NextResponse.json({
+      posts: posts.length > 0 ? posts : getFallbackPosts(),
+      source: posts.length > 0 ? "medium" : "fallback",
+    })
   } catch (error) {
     console.error("Error fetching Medium posts:", error)
-    // Return fallback posts instead of error
+    // Always return fallback posts instead of throwing error
     return NextResponse.json({
       posts: getFallbackPosts(),
       source: "fallback",
@@ -32,58 +57,18 @@ export async function GET() {
   }
 }
 
-function parseMediumRSS(xmlText: string) {
-  // This is a simplified parser - in production, you'd use a proper XML parser
-  const posts = []
-  const itemRegex = /<item>([\s\S]*?)<\/item>/g
-  let match
-
-  while ((match = itemRegex.exec(xmlText)) !== null) {
-    const item = match[1]
-
-    const title = extractTag(item, "title")
-    const link = extractTag(item, "link")
-    const pubDate = extractTag(item, "pubDate")
-    const description = extractTag(item, "description")
-    const categories = extractCategories(item)
-
-    if (title && link) {
-      posts.push({
-        title: cleanText(title),
-        link,
-        pubDate: new Date(pubDate).toISOString(),
-        description: cleanText(description).substring(0, 200) + "...",
-        categories,
-        readTime: Math.ceil(cleanText(description).split(" ").length / 200) + " min read",
-      })
-    }
-  }
-
-  return posts.slice(0, 6) // Return latest 6 posts
-}
-
-function extractTag(text: string, tag: string): string {
-  const regex = new RegExp(`<${tag}[^>]*>(.*?)<\/${tag}>`, "i")
-  const match = text.match(regex)
-  return match ? match[1] : ""
-}
-
-function extractCategories(text: string): string[] {
-  const categoryRegex = /<category[^>]*>(.*?)<\/category>/g
-  const categories = []
-  let match
-
-  while ((match = categoryRegex.exec(text)) !== null) {
-    categories.push(match[1])
-  }
-
-  return categories.slice(0, 3) // Return first 3 categories
+function calculateReadTime(content: string): string {
+  const wordsPerMinute = 200
+  const wordCount = cleanText(content).split(/\s+/).length
+  const readTime = Math.ceil(wordCount / wordsPerMinute)
+  return `${readTime} min read`
 }
 
 function cleanText(text: string): string {
   return text
-    .replace(/<[^>]*>/g, "")
-    .replace(/&[^;]+;/g, "")
+    .replace(/<[^>]*>/g, "") // Remove HTML tags
+    .replace(/&[^;]+;/g, "") // Remove HTML entities
+    .replace(/\s+/g, " ") // Replace multiple spaces with single space
     .trim()
 }
 
@@ -94,7 +79,7 @@ function getFallbackPosts() {
       link: "https://speaktosameer.medium.com/",
       pubDate: new Date().toISOString(),
       description:
-        "Learn the latest techniques and patterns for building maintainable and scalable React applications that can grow with your business needs.",
+        "Learn the latest techniques and patterns for building maintainable and scalable React applications that can grow with your business needs. From component architecture to state management...",
       categories: ["React", "JavaScript", "Performance"],
       readTime: "8 min read",
     },
@@ -103,7 +88,7 @@ function getFallbackPosts() {
       link: "https://speaktosameer.medium.com/",
       pubDate: new Date(Date.now() - 86400000).toISOString(),
       description:
-        "Discover how understanding user psychology can dramatically improve your design decisions and create more engaging digital experiences.",
+        "Discover how understanding user psychology can dramatically improve your design decisions and create more engaging digital experiences. User experience design goes beyond aesthetics...",
       categories: ["UI/UX", "Psychology", "Design"],
       readTime: "6 min read",
     },
@@ -112,9 +97,36 @@ function getFallbackPosts() {
       link: "https://speaktosameer.medium.com/",
       pubDate: new Date(Date.now() - 172800000).toISOString(),
       description:
-        "Transform your WordPress site's performance with these proven optimization techniques that can reduce load times by up to 70%.",
+        "Transform your WordPress site's performance with these proven optimization techniques that can reduce load times by up to 70%. Website speed is crucial for user experience and SEO...",
       categories: ["WordPress", "Performance", "SEO"],
       readTime: "10 min read",
+    },
+    {
+      title: "The Future of Web Development: Trends to Watch in 2024",
+      link: "https://speaktosameer.medium.com/",
+      pubDate: new Date(Date.now() - 259200000).toISOString(),
+      description:
+        "Stay ahead of the curve with these emerging web development trends that are shaping the future of digital experiences. The web development landscape is constantly evolving...",
+      categories: ["Web Development", "Trends", "Future"],
+      readTime: "7 min read",
+    },
+    {
+      title: "Mastering Modern CSS: Grid, Flexbox, and Beyond",
+      link: "https://speaktosameer.medium.com/",
+      pubDate: new Date(Date.now() - 345600000).toISOString(),
+      description:
+        "Deep dive into modern CSS techniques that will revolutionize your web layouts. Learn how to create responsive, flexible designs with CSS Grid and Flexbox...",
+      categories: ["CSS", "Frontend", "Design"],
+      readTime: "9 min read",
+    },
+    {
+      title: "Building Accessible Web Applications: A Developer's Guide",
+      link: "https://speaktosameer.medium.com/",
+      pubDate: new Date(Date.now() - 432000000).toISOString(),
+      description:
+        "Learn how to create web applications that are accessible to everyone. This comprehensive guide covers WCAG guidelines, semantic HTML, ARIA attributes, and testing strategies...",
+      categories: ["Accessibility", "Web Development", "Inclusive Design"],
+      readTime: "12 min read",
     },
   ]
 }
