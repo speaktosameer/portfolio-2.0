@@ -23,7 +23,7 @@ const projects: Project[] = [
     longDescription:
       "A comprehensive e-commerce platform built with React and Next.js, featuring real-time inventory management, secure payment processing with Stripe integration, advanced search and filtering, user authentication, order tracking, and admin dashboard. The platform handles thousands of products and provides seamless shopping experience across all devices.",
     category: "React",
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/images/ecommerce-project.png",
     tags: ["React", "Next.js", "TypeScript", "Stripe", "PostgreSQL"],
     link: "https://github.com/speaktosameer",
   },
@@ -34,7 +34,7 @@ const projects: Project[] = [
     longDescription:
       "Comprehensive UI/UX design project for a fitness tracking mobile application. Conducted extensive user research, created user personas, designed wireframes and high-fidelity mockups, developed interactive prototypes, and established a complete design system. The app focuses on workout tracking, nutrition monitoring, and social features to keep users motivated.",
     category: "UI/UX",
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/images/fitness-app-design.png",
     tags: ["Figma", "User Research", "Prototyping", "Design System"],
     link: "https://www.behance.net/speaktosameer",
   },
@@ -45,7 +45,7 @@ const projects: Project[] = [
     longDescription:
       "Custom WordPress website for a restaurant chain featuring online ordering system, table reservation functionality, menu management, customer reviews, location finder, and integration with delivery services. Built with performance optimization, SEO best practices, and mobile-responsive design to increase online orders by 150%.",
     category: "WordPress",
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/images/restaurant-website.png",
     tags: ["WordPress", "WooCommerce", "PHP", "MySQL", "Custom Theme"],
     link: "https://sameer-ansari.com.np",
   },
@@ -56,7 +56,7 @@ const projects: Project[] = [
     longDescription:
       "Advanced analytics dashboard built with React and D3.js, featuring real-time data visualization, interactive charts and graphs, customizable widgets, data export functionality, user role management, and API integrations. The dashboard processes millions of data points and provides actionable insights for business decision-making.",
     category: "React",
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/images/analytics-dashboard.png",
     tags: ["React", "D3.js", "Chart.js", "WebSocket", "Node.js"],
     link: "https://github.com/speaktosameer",
   },
@@ -67,7 +67,7 @@ const projects: Project[] = [
     longDescription:
       "Complete brand identity design project for a tech startup including logo design, color palette development, typography selection, brand guidelines creation, business card design, website mockups, and marketing materials. The brand identity reflects innovation, trust, and modern technology while maintaining professional appeal.",
     category: "UI/UX",
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/images/brand-identity.png",
     tags: ["Branding", "Logo Design", "Adobe Creative Suite", "Brand Guidelines"],
     link: "https://www.behance.net/speaktosameer",
   },
@@ -78,7 +78,7 @@ const projects: Project[] = [
     longDescription:
       "Advanced WordPress blog platform with custom post types, advanced content management system, SEO optimization, social media integration, newsletter subscription, comment system with moderation, multi-author support, and performance optimization. The platform supports multiple content formats and provides excellent user experience for both readers and content creators.",
     category: "WordPress",
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/images/blog-platform.png",
     tags: ["WordPress", "Custom Post Types", "SEO", "Performance", "Security"],
     link: "https://sameer-ansari.com.np",
   },

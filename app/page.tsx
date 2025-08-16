@@ -7,8 +7,6 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { MobileNav } from "@/components/mobile-nav"
 import { ProjectFilter } from "@/components/project-filter"
 import { EnhancedContactForm } from "@/components/enhanced-contact-form"
-import { MediumBlogSection } from "@/components/medium-blog-section"
-import { GitHubSection } from "@/components/github-section"
 import { SkillsProgress } from "@/components/skills-progress"
 import { ClientFeedback } from "@/components/client-feedback"
 import { useAnalytics } from "@/components/analytics"
@@ -63,6 +61,14 @@ export default function Portfolio() {
     trackEvent("cta_click", { action })
   }
 
+  const scrollToPortfolio = () => {
+    const portfolioSection = document.getElementById("portfolio")
+    if (portfolioSection) {
+      portfolioSection.scrollIntoView({ behavior: "smooth" })
+    }
+    trackEvent("cta_click", { action: "view_work" })
+  }
+
   if (!mounted) return null
 
   return (
@@ -94,9 +100,6 @@ export default function Portfolio() {
               >
                 Portfolio
               </Link>
-              <Link href="#blog" className="text-muted-foreground hover:text-blue-600 transition-colors font-medium">
-                Blog
-              </Link>
               <Link href="#contact" className="text-muted-foreground hover:text-blue-600 transition-colors font-medium">
                 Contact
               </Link>
@@ -117,11 +120,12 @@ export default function Portfolio() {
           <div className="mb-8 animate-fade-in">
             <div className="relative inline-block">
               <Image
-                src="/placeholder.svg?height=200&width=200"
-                alt="Sameer Ansari"
+                src="/sameer-new-profile.jpg"
+                alt="Sameer Ansari - Full-Stack Developer & UI/UX Designer"
                 width={200}
                 height={200}
-                className="rounded-full mx-auto mb-6 border-4 border-gradient-to-r from-blue-500 to-purple-500 shadow-2xl"
+                className="rounded-full mx-auto mb-6 border-4 border-gradient-to-r from-blue-500 to-purple-500 shadow-2xl object-cover"
+                priority
               />
               <div className="absolute -bottom-2 -right-2 bg-green-500 w-8 h-8 rounded-full border-4 border-white dark:border-gray-800 animate-pulse" />
             </div>
@@ -139,7 +143,7 @@ export default function Portfolio() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center animate-slide-up-delay-2">
             <Button
               size="lg"
-              onClick={() => handleCTAClick("view_work")}
+              onClick={scrollToPortfolio}
               className="text-lg px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 shadow-lg transform hover:scale-105 transition-all duration-300"
             >
               View My Work <ArrowRight className="ml-2 h-5 w-5" />
@@ -149,9 +153,12 @@ export default function Portfolio() {
               size="lg"
               onClick={() => handleCTAClick("download_cv")}
               className="text-lg px-8 py-4 border-2 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-blue-950 dark:hover:to-purple-950 transition-all duration-300"
+              asChild
             >
-              <Download className="mr-2 h-5 w-5" />
-              Download CV
+              <a href="/sameer-ansari-cv.pdf" download>
+                <Download className="mr-2 h-5 w-5" />
+                Download CV
+              </a>
             </Button>
           </div>
 
@@ -160,7 +167,7 @@ export default function Portfolio() {
             <Button
               variant="outline"
               size="icon"
-              className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+              className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
               asChild
             >
               <a href="https://github.com/speaktosameer" target="_blank" rel="noopener noreferrer">
@@ -170,7 +177,7 @@ export default function Portfolio() {
             <Button
               variant="outline"
               size="icon"
-              className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+              className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
               asChild
             >
               <a href="https://linkedin.com/in/speaktosameernp" target="_blank" rel="noopener noreferrer">
@@ -180,7 +187,7 @@ export default function Portfolio() {
             <Button
               variant="outline"
               size="icon"
-              className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+              className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
               asChild
             >
               <a href="https://x.com/speaktosameer" target="_blank" rel="noopener noreferrer">
@@ -190,7 +197,7 @@ export default function Portfolio() {
             <Button
               variant="outline"
               size="icon"
-              className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+              className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
               asChild
             >
               <a href="https://www.facebook.com/speaktosameer/" target="_blank" rel="noopener noreferrer">
@@ -230,7 +237,7 @@ export default function Portfolio() {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
                     asChild
                   >
                     <a href="https://github.com/speaktosameer" target="_blank" rel="noopener noreferrer">
@@ -240,7 +247,7 @@ export default function Portfolio() {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
                     asChild
                   >
                     <a href="https://linkedin.com/in/speaktosameernp" target="_blank" rel="noopener noreferrer">
@@ -250,7 +257,7 @@ export default function Portfolio() {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
                     asChild
                   >
                     <a href="https://speaktosameer.medium.com/" target="_blank" rel="noopener noreferrer">
@@ -314,51 +321,49 @@ export default function Portfolio() {
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((index) => (
-              <ScrollAnimation key={index} animation="scale-up" delay={index * 100}>
-                <Card className="text-center hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border-0 group">
-                  <CardHeader className="pb-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                      <Code className="h-10 w-10 text-white" />
-                    </div>
-                    <CardTitle className="text-2xl mb-4 text-gray-900 dark:text-white">React Development</CardTitle>
-                    <CardDescription className="text-lg leading-relaxed">
-                      Modern, scalable React applications with clean code and optimal performance.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2 justify-center">
-                      <Badge
-                        variant="secondary"
-                        className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
-                      >
-                        React
-                      </Badge>
-                      <Badge
-                        variant="secondary"
-                        className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
-                      >
-                        Next.js
-                      </Badge>
-                      <Badge
-                        variant="secondary"
-                        className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
-                      >
-                        TypeScript
-                      </Badge>
-                      <Badge
-                        variant="secondary"
-                        className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
-                      >
-                        Tailwind CSS
-                      </Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-              </ScrollAnimation>
-            ))}
+            <ScrollAnimation animation="scale-up" delay={0}>
+              <Card className="text-center hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border-0 group">
+                <CardHeader className="pb-4">
+                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <Code className="h-10 w-10 text-white" />
+                  </div>
+                  <CardTitle className="text-2xl mb-4 text-gray-900 dark:text-white">React Development</CardTitle>
+                  <CardDescription className="text-lg leading-relaxed">
+                    Modern, scalable React applications with clean code and optimal performance.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    <Badge
+                      variant="secondary"
+                      className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
+                    >
+                      React
+                    </Badge>
+                    <Badge
+                      variant="secondary"
+                      className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
+                    >
+                      Next.js
+                    </Badge>
+                    <Badge
+                      variant="secondary"
+                      className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
+                    >
+                      TypeScript
+                    </Badge>
+                    <Badge
+                      variant="secondary"
+                      className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
+                    >
+                      Tailwind CSS
+                    </Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            </ScrollAnimation>
 
-            <ScrollAnimation animation="scale-up" delay={1 * 100}>
+            <ScrollAnimation animation="scale-up" delay={100}>
               <Card className="text-center hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-0 group">
                 <CardHeader className="pb-4">
                   <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
@@ -400,7 +405,7 @@ export default function Portfolio() {
               </Card>
             </ScrollAnimation>
 
-            <ScrollAnimation animation="scale-up" delay={2 * 100}>
+            <ScrollAnimation animation="scale-up" delay={200}>
               <Card className="text-center hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border-0 group">
                 <CardHeader className="pb-4">
                   <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
@@ -472,14 +477,6 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* GitHub Section */}
-      <GitHubSection />
-
-      {/* Blog Section */}
-      <section id="blog">
-        <MediumBlogSection />
-      </section>
-
       {/* Client Feedback Section */}
       <ClientFeedback />
 
@@ -536,7 +533,7 @@ export default function Portfolio() {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
                     asChild
                   >
                     <a href="https://github.com/speaktosameer" target="_blank" rel="noopener noreferrer">
@@ -546,7 +543,7 @@ export default function Portfolio() {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
                     asChild
                   >
                     <a href="https://linkedin.com/in/speaktosameernp" target="_blank" rel="noopener noreferrer">
@@ -556,7 +553,7 @@ export default function Portfolio() {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
                     asChild
                   >
                     <a href="https://x.com/speaktosameer" target="_blank" rel="noopener noreferrer">
@@ -566,7 +563,7 @@ export default function Portfolio() {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+                    className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
                     asChild
                   >
                     <a href="https://www.facebook.com/speaktosameer/" target="_blank" rel="noopener noreferrer">
@@ -627,11 +624,6 @@ export default function Portfolio() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#blog" className="hover:text-blue-600 transition-colors">
-                    Blog
-                  </Link>
-                </li>
-                <li>
                   <Link href="#contact" className="hover:text-blue-600 transition-colors">
                     Contact
                   </Link>
@@ -644,7 +636,7 @@ export default function Portfolio() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+                  className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
                   asChild
                 >
                   <a href="https://github.com/speaktosameer" target="_blank" rel="noopener noreferrer">
@@ -654,7 +646,7 @@ export default function Portfolio() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+                  className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
                   asChild
                 >
                   <a href="https://linkedin.com/in/speaktosameernp" target="_blank" rel="noopener noreferrer">
@@ -664,7 +656,7 @@ export default function Portfolio() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300"
+                  className="hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950 transition-all duration-300 bg-transparent"
                   asChild
                 >
                   <a href="https://speaktosameer.medium.com/" target="_blank" rel="noopener noreferrer">
